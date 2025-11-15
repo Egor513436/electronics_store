@@ -72,9 +72,9 @@ section {
 .product-card button {
     padding: 10px 20px; 
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 15px;
-    background-color:#19192f;
+    background-color:#08081f;
     transition: background-color 0.3s, color 0.3s;
 }
 .product-card button:hover {
@@ -157,6 +157,21 @@ p {
 }
 .onas {
     font-size: large;
+    padding: 20px 0;
+}
+.bob {
+    border-radius: 15px;
+    background-color: black;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+}
+.remove-item-btn {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
 }
 
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>Ваша Корзина</h1>
+        <nav>
+            <ul>
+                <li> <a href="#" id="cart-count">Корзина (0)</a></li>
+                <li> <a href="#" id="cart-total">Сумма: 0 руб.</a></li>
+                <li><a href="../index.html">Главная</a></li> 
+                <li><a href="catalog.html">Каталог</a></li> 
+                <li><a href="about.html">О нас</a></li> 
+                <li><a href="contact.html">Контакты</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cart-content">
+            <h2>Товары в корзине</h2>
+            <div id="cart-items-container">
+                <p id="empty-cart-message">Ваша корзина пуста.</p>
+            </div>
+            <div id="cart-summary">
+                <h3>Общая сумма заказа: <span id="final-total">0 руб.</span></h3>
+                <button class="bob" id="checkout-btn">Оформить заказ</button>
+                <button class="bob" id="clear-cart-btn">Очистить корзину</button>
+            </div>
+        </section>
+    </main>
+    
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', displayCartItems);
+    </script>
+</body>
+</html>

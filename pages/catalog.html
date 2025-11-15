@@ -17,6 +17,7 @@
                 <li><a href="catalog.html">Каталог</a></li> 
                 <li><a href="about.html">О нас</a></li> 
                 <li><a href="contact.html">Контакты</a></li> 
+                <li><a href="cart.html">Ваша Корзина</a></li>
             </ul>
         </nav>
     </header>
@@ -48,6 +49,7 @@
                     <p>Цена: 200 000 руб.</p>
                     <button class="add-to-cart-btn" data-name="Видео карта RTX 5090" data-price="200000">Добавить в корзину</button>
                 </div>
+            </div>
         </section>
         <section id="products">
             <div class="product-container">
@@ -57,7 +59,8 @@
                     <p>Цена: 40000 руб.</p>
                     <button class="add-to-cart-btn" data-name="Системный блок игровой ПК MaxON-small PRO i7 7700  RX580 8gb, 32gb ОЗУ, SSD 1024GB" data-price="40000">Добавить в корзину</button>
                 </div>
-</section>
+            </div>
+        </section>
         <section id="products">
             <div class="product-container">
                 <div class="product-card"> 
@@ -66,7 +69,9 @@
                     <p>Цена: 45168 руб.</p>
                     <button class="add-to-cart-btn" data-name="Монитор" data-price="45168">Добавить в корзину</button>
                 </div>
-                <section id="products">
+            </div>
+        </section>
+        <section id="products">
             <div class="product-container">
                 <div class="product-card"> 
                     <h3>Клавиатура AULA F98Pro, с 3 вариантами подключения: проводное, Bluetooth и 2,4 ГГц (передатчик в комплекте)</h3>
@@ -74,19 +79,15 @@
                     <p>Цена: 5962 руб.</p>
                     <button class="add-to-cart-btn" data-name="Клавиатура" data-price="5962">Добавить в корзину</button>
                 </div>
-                   <section id="products">
-            <div class="product-container">
-                <div class="product-card"> 
-                    <h3>Акустика AVerMedia Ballista GS 315</h3>
-                    <img src="../image/5c986c370fff819c6e5ba3e2.jpg" alt="Колонки">
-                    <p>Цена: 7500 руб.</p>
-                    <button class="add-to-cart-btn" data-name="Акустика" data-price="7500">Добавить в корзину</button>
-                </div>
+            </div>
+        </section>
     </main>
-    <footer>
-        &copy; Работаем для вас с 2013 года !!!
-    </footer>
-    <script src="../script.js"></script>
-    <div id="notification-container"></div>
+    <script src=".
+./script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            rebindEventListeners(); 
+        });
+    </script>
 </body>
 </html>
