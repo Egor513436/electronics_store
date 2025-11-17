@@ -275,91 +275,72 @@ text-align: left;
 }
 /* --- МОБИЛЬНАЯ АДАПТАЦИЯ (Экраны до 600px) --- */
 @media screen and (max-width: 600px) {
-    
-    /* Сброс общих отступов */
-    body, main {
-        padding: 0;
-        margin: 0;
+    /* 1. Главный контейнер и отступы */
+    main {
+        padding: 10px;
     }
-    
-    /* Навигация (вертикально) */
+
+    /* 2. Навигация (старая была слишком широкой) */
     header nav ul {
         flex-direction: column;
-        align-items: center; 
-        padding: 10px 0;
+        align-items: center; /* Центрируем ссылки */
     }
     nav li {
         margin: 5px 0;
     }
-    
-    /* Заголовки */
+
+    /* 3. Заголовки */
     header h1 {
         font-size: 24px;
-        padding-top: 10px;
     }
     
-    /* Карточки товаров (один столбец) */
+    /* 4. Карточки товаров (1 столбец) */
     .product-container {
         grid-template-columns: 1fr;
         gap: 15px;
-        max-width: 95%;
-        margin: 20px auto;
+        max-width: 100%;
     }
-    
-    /* Общие блоки контента (Профиль, Отзывы, FAQ, Auth) */
+
+    /* 5. Изображения (КРИТИЧЕСКИ ВАЖНО) */
+    .product-card img, 
+    #about-content img {
+        max-width: 90%; /* Ограничиваем, чтобы не вылезали за экран */
+        height: auto;
+    }
+
+    /* 6. Общие блоки контента (Профиль, Отзывы, FAQ, Auth) */
     #auth-section, 
     #delivery-info, 
     #payment-methods, 
     #faq-list, 
     #reviews-section,
-    .review-form-wrapper,
-    .tab-content {
-        max-width: 95%; 
+    #profile-details,
+    #order-history,
+    .review-form-wrapper {
+        max-width: 100%; /* Занимаем всю ширину */
         margin: 10px auto;
         padding: 15px;
     }
-    
-    /* Изображения (жесткое ограничение для всего контента) */
-    img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-    }
 
-    /* Специально для изображений в карточках/отзывах */
-    .product-card img {
-        max-width: 150px; 
-    }
-    .review-card .bb {
-        max-width: 80px;
-    }
-    
-    /* Формы и кнопки */
+    /* 7. Элементы форм и инпуты */
     .form-group input, 
     #review-form textarea {
-        width: 90%; 
-    }
-    .bob {
-        padding: 12px;
+        width: 90%; /* Чтобы инпут не прижимался к краю */
     }
 
-    /* Элементы корзины (для cart.html) */
+    /* 8. Контейнер корзины (для cart.html) */
     #cart-items-container .cart-item {
-        flex-direction: column; 
+        flex-direction: column; /* Элементы корзины вертикально */
         align-items: flex-start;
-        padding: 10px 0;
+        text-align: left;
     }
     .cart-item-img {
-        width: 80px !important;
-        height: 80px !important;
-        margin-bottom: 5px;
+        width: 100px !important;
+        height: 100px !important;
+        margin-bottom: 10px;
+    }
+    .remove-item-btn {
+        width: 100%;
+        margin-top: 10px;
     }
 }
-.bb {
-    max-width: 100px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: block; /* Важно для выравнивания */
-}
-
