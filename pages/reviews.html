@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы покупателей - ElectroShop</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>Отзывы наших клиентов</h1>
+        <nav>
+            <ul>
+                <li> <a href="#" id="cart-count">Корзина (0)</a></li>
+                <li> <a href="#" id="cart-total">Сумма: 0 руб.</a></li>
+                <li><a href="../index.html">Главная</a></li> 
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="delivery.html">Доставка и Оплата</a></li> 
+                <li><a href="about.html">О нас</a></li> 
+                <li><a href="contact.html">Контакты</a></li> 
+                <li><a href="faq.html">FAQ - Вопросы и Ответы</a></li>
+                <li><a href="cart.html">Ваша Корзина</a></li>
+                <li><a href="auth.html">Вход/Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="reviews-section">
+            <h2>Что говорят о нас</h2>
+            
+            <div class="review-form-wrapper">
+                <h3>Оставить свой отзыв</h3>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label for="review-name">Ваше имя:</label>
+                        <input type="text" id="review-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-text">Отзыв:</label>
+                        <textarea id="review-text" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="bob">Отправить отзыв</button>
+                </form>
+            </div>
+
+            <!-- Контейнер для отображения отзывов -->
+            <div class="reviews-container">
+                <div class="review-card">
+                    <img class="bb" src="../image/ноутбук.webp" alt="">
+                    <p class="review-text">Купил ноутбук Gaming Pro. Доставили быстро, за 2 дня. Упаковка целая, ноут летает! Очень доволен сервисом.</p>
+                    <p class="review-author">— Андрей, г. Москва</p>
+                </div>
+                <div class="review-card">
+                    <img class="bb" src="../image/Видео карта 5090.jpg" alt="">
+                    <p class="review-text">Постоянно заказываю тут комплектующие. Цены отличные, консультанты всегда на связи. Рекомендую!</p>
+                    <p class="review-author">— Сергей, системный администратор</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy; Работаем для вас с 2013 года !!!
+    </footer>
+</body>
+</html>

@@ -40,14 +40,15 @@ main {
     padding: 20px 0;
 }
 footer {
-    background-image: url(image/i.webp);
+    background-image: url(image/1080x1920.jfif);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100px;
     color: rgb(255, 255, 255);
     text-align: center;
-    padding: 50px 0;
+    height: 10px;
+    padding: 20px 0;
 }
 section {
     padding: 20px 0;
@@ -180,7 +181,7 @@ p {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(149, 149, 149);
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 text-align: left;
@@ -260,17 +261,17 @@ text-align: left;
 }
 
 .logout-btn {
-    background-color: #ff0000; 
+    background-color: #000000; 
     text-decoration: none;
     display: inline-block; 
 }
 
 .logout-btn:hover {
-    background-color: #b30c0c;
+    background-color: #652828;
 }
 
 .bob:hover {
-    background-color: #5f1818;
+    background-color: rgb(96, 93, 93);
 }
 /* --- МОБИЛЬНАЯ АДАПТАЦИЯ (Экраны до 600px) --- */
 @media screen and (max-width: 600px) {
@@ -278,42 +279,68 @@ text-align: left;
     main {
         padding: 10px;
     }
-    /* 2. Навигация */
-    nav ul {
-        flex-direction: column; /* Вертикальное расположение ссылок */
+
+    /* 2. Навигация (старая была слишком широкой) */
+    header nav ul {
+        flex-direction: column;
+        align-items: center; /* Центрируем ссылки */
     }
     nav li {
-        margin: 5px 0; /* Меньше вертикальных отступов */
+        margin: 5px 0;
     }
+
     /* 3. Заголовки */
     header h1 {
-        font-size: 24px; /* Уменьшаем размер главного заголовка */
+        font-size: 24px;
     }
-    /* 4. Карточки товаров */
+    
+    /* 4. Карточки товаров (1 столбец) */
     .product-container {
-        grid-template-columns: 1fr; /* Один столбец */
-        max-width: 90%;
-        margin: 20px auto;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 100%;
     }
-    /* 5. Общие информационные блоки (Профиль, Доставка, FAQ, Auth) */
-    #auth-section, #delivery-info, #payment-methods, #faq-list {
-        max-width: 95%; /* Занимаем почти всю ширину экрана */
+
+    /* 5. Изображения (КРИТИЧЕСКИ ВАЖНО) */
+    .product-card img, 
+    #about-content img {
+        max-width: 90%; /* Ограничиваем, чтобы не вылезали за экран */
+        height: auto;
+    }
+
+    /* 6. Общие блоки контента (Профиль, Отзывы, FAQ, Auth) */
+    #auth-section, 
+    #delivery-info, 
+    #payment-methods, 
+    #faq-list, 
+    #reviews-section,
+    #profile-details,
+    #order-history,
+    .review-form-wrapper {
+        max-width: 100%; /* Занимаем всю ширину */
+        margin: 10px auto;
         padding: 15px;
-        margin: 20px auto;
     }
-    /* 6. Изображения */
-    .product-card img {
-        max-width: 150px;
+
+    /* 7. Элементы форм и инпуты */
+    .form-group input, 
+    #review-form textarea {
+        width: 90%; /* Чтобы инпут не прижимался к краю */
     }
-    /* 7. Сообщения о корзине в шапке */
-    #cart-count, #cart-total {
-        font-size: 14px;
-        margin: 5px;
+
+    /* 8. Контейнер корзины (для cart.html) */
+    #cart-items-container .cart-item {
+        flex-direction: column; /* Элементы корзины вертикально */
+        align-items: flex-start;
+        text-align: left;
     }
-    /* 8. Контейнер преимуществ */
-    .advantages-container {
-        padding: 10px 0;
+    .cart-item-img {
+        width: 100px !important;
+        height: 100px !important;
+        margin-bottom: 10px;
+    }
+    .remove-item-btn {
+        width: 100%;
+        margin-top: 10px;
     }
 }
-
-

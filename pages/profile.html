@@ -11,47 +11,65 @@
         <h1>Личный кабинет</h1>
         <nav>
             <ul>
-     <li> <a href="#" id="cart-count">Корзина (0)</a></li>
-            <li> <a href="#" id="cart-total">Сумма: 0 руб.</a></li>
-             <li><a href="profile.html">Мой Профиль</a></li>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="delivery.html">Доставка и Оплата</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="contact.html">Контакты</a></li>
-            <li><a href="faq.html">FAQ - Вопросы и Ответы</a></li>
-            <li><a href="cart.html">Ваша Корзина</a></li>
-            <li><a href="auth.html">Вход и Регистрация</a></li>
+                <li> <a href="#" id="cart-count">Корзина (0)</a></li>
+                <li> <a href="#" id="cart-total">Сумма: 0 руб.</a></li>
+                <li><a href="../index.html">Главная</a></li> 
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="delivery.html">Доставка и Оплата</a></li> 
+                <li><a href="about.html">О нас</a></li> 
+                <li><a href="contact.html">Контакты</a></li> 
+                <li><a href="faq.html">FAQ - Вопросы и Ответы</a></li>
+                <li><a href="reviews.html">Отзывы</a></li> 
+                <li><a href="cart.html">Ваша Корзина</a></li>
+                <li><a href="auth.html">Вход/Регистрация</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="profile-details">
-            <h2>Личные данные</h2>
-            <div class="info-block">
-                <p><strong>Имя:</strong> Егор</p>
-                <p><strong>Email:</strong> e.example@college.ru</p>
-                <p><strong>Телефон:</strong> +7 (XXX) XXX-XX-XX</p>
-                <button class="bob">Редактировать профиль</button>
+        <section id="profile-content">
+            <div class="auth-tabs profile-tabs">
+                <button class="tab-button active" data-tab="details">Профиль</button>
+                <button class="tab-button" data-tab="orders">Заказы</button>
+                <button class="tab-button" data-tab="settings">Настройки</button>
+            </div>
+
+            <!-- Раздел 1: Личные данные (Активен по умолчанию) -->
+            <div id="details" class="tab-content active-form">
+                <h2>Ваши данные</h2>
+                <div class="info-block profile-data-block">
+                    <p><strong>Имя:</strong> Егор</p>
+                    <p><strong>Email:</strong> e.example@college.ru</p>
+                    <p><strong>Телефон:</strong> +7 (XXX) XXX-XX-XX</p>
+                    <button class="bob">Редактировать</button>
+                </div>
+            </div>
+
+            <!-- Раздел 2: История заказов -->
+            <div id="orders" class="tab-content hidden-form">
+                <h2>История заказов</h2>
+                <div class="info-block" id="orders-container">
+                    <p>Заказ #1001: Видеокарта RTX 5090 (200 000 руб.) - Статус: Доставлен</p>
+                    <p>Заказ #1002: Игровая консоль PS5 (65 000 руб.) - Статус: В обработке</p>
+                </div>
+            </div>
+
+            <!-- Раздел 3: Настройки -->
+            <div id="settings" class="tab-content hidden-form">
+                <h2>Настройки аккаунта</h2>
+                <div class="info-block">
+                    <p>Здесь будут настройки безопасности и уведомлений.</p>
+                    <button class="bob">Сменить пароль</button>
+                </div>
             </div>
         </section>
 
-        <section id="order-history">
-            <h2>История заказов</h2>
-            <div class="info-block" id="orders-container">
-                <p>Заказ #1001: Видеокарта RTX 5090 (200 000 руб.) - Статус: Доставлен</p>
-                <p>Заказ #1002: Игровая консоль PS5 (65 000 руб.) - Статус: В обработке</p>
-                <p>Заказов пока нет.</p>
-            </div>
-        </section>
-
-      <div class="logout-wrapper">
-     <a href="auth.html" class="bob logout-btn">Выход</a>
-</div>
-
+        <div class="logout-wrapper">
+             <a href="auth.html" class="bob logout-btn">Выход</a>
+        </div>
     </main>
     <footer>
         &copy; Работаем для вас с 2013 года !!!
     </footer>
+    <script src="../profile.js"></script>
 </body>
 </html>
