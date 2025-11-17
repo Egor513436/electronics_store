@@ -119,8 +119,7 @@ section {
     margin: 20px auto;
     border-radius: 15px;
 }
-#conta
-p {
+#contact-catalog p {
     text-align: center;
     padding: 20px 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -174,6 +173,147 @@ p {
     padding: 10px;
 }
 
+/* --- СТИЛИ ДЛЯ АВТОРИЗАЦИИ, ДОСТАВКИ И FAQ --- */
 
+/* Контейнеры для новых страниц */
+#auth-section, #delivery-info, #payment-methods, #faq-list {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+text-align: left;
+}
+
+/* Вкладки авторизации */
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.tab-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+.tab-button.active {
+    background-color: #08081f;
+    color: white;
+    border-color: #08081f;
+}
+
+/* Формы авторизации */
+.auth-form {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+.auth-form.hidden-form {
+    display: none;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.auth-form .bob {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Информационные блоки (Доставка/Оплата) */
+.info-block, .faq-item {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #fafafa;
+}
+.info-block h3, .faq-item h3 {
+    color: #08081f;
+    margin-top: 0;
+    font-size: 20px;
+}
+.faq-item p {
+    font-size: 16px;
+    padding: 5px 0;
+}
+/* --- СТИЛИ ДЛЯ ПРОФИЛЯ --- */
+.logout-wrapper {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.logout-btn {
+    background-color: #ff0000; 
+    text-decoration: none;
+    display: inline-block; 
+}
+
+.logout-btn:hover {
+    background-color: #b30c0c;
+}
+
+.bob:hover {
+    background-color: #5f1818;
+}
+/* --- МОБИЛЬНАЯ АДАПТАЦИЯ (Экраны до 600px) --- */
+@media screen and (max-width: 600px) {
+    /* 1. Главный контейнер и отступы */
+    main {
+        padding: 10px;
+    }
+    /* 2. Навигация */
+    nav ul {
+        flex-direction: column; /* Вертикальное расположение ссылок */
+    }
+    nav li {
+        margin: 5px 0; /* Меньше вертикальных отступов */
+    }
+    /* 3. Заголовки */
+    header h1 {
+        font-size: 24px; /* Уменьшаем размер главного заголовка */
+    }
+    /* 4. Карточки товаров */
+    .product-container {
+        grid-template-columns: 1fr; /* Один столбец */
+        max-width: 90%;
+        margin: 20px auto;
+    }
+    /* 5. Общие информационные блоки (Профиль, Доставка, FAQ, Auth) */
+    #auth-section, #delivery-info, #payment-methods, #faq-list {
+        max-width: 95%; /* Занимаем почти всю ширину экрана */
+        padding: 15px;
+        margin: 20px auto;
+    }
+    /* 6. Изображения */
+    .product-card img {
+        max-width: 150px;
+    }
+    /* 7. Сообщения о корзине в шапке */
+    #cart-count, #cart-total {
+        font-size: 14px;
+        margin: 5px;
+    }
+    /* 8. Контейнер преимуществ */
+    .advantages-container {
+        padding: 10px 0;
+    }
+}
 
 
