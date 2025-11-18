@@ -1,46 +1,196 @@
-// 1. Функция для подсчета итоговой суммы
-function calculateTotal(itemsPrice, tax) {
-    // 1.1. Проверка условия: если цена не число, возвращаем 0
-    if (typeof itemsPrice !== 'number' || typeof tax !== 'number') {
-        return 0; 
+const popularProductsData = [
+    {
+        "id": 1,
+        "name": "Игровая консоль PS5",
+        "price": 65000,
+        "image": "image/PS5.webp"
+    },
+    {
+        "id": 2,
+        "name": "Видеокарта RTX 5090",
+        "price": 200000,
+        "image": "image/Видео карта 5090.jpg"
     }
-    
-    // 1.2. Расчет налога
-    const taxAmount = itemsPrice * tax;
-    
-    // 1.3. Расчет итоговой суммы
-    const finalPrice = itemsPrice + taxAmount;
-    
-    // 1.4. Возврат результата
-    return finalPrice;
+];
+
+const allProducts = [
+    ...popularProductsData, 
+    { "id": 3, "name": "Ноутбук Gaming Pro", "price": 120000, "image": "image/ноутбук.webp" },
+    { "id": 4, "name": "Смартфон Ultra X", "price": 80000, "image": "image/Смартфон.webp" },
+    { "id": 5, "name": "Системный блок игровой ПК MaxON-small PRO i7 7700  RX580 8gb, 32gb ОЗУ, SSD 1024GB", "price": 40000, "image": "image/orig.webp" },
+    { "id": 6, "name": "Монитор", "price": 45168, "image": "image/optimize.webp" },
+    { "id": 7, "name": "Клавиатура", "price": 5962, "image": "image/optimize (1).webp" }
+];
+
+function getCart() {
+    return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-// 2. Тестирование функции
-const product1 = 2000;
-const rate = 0.13; // 13%
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+}
 
-console.log(`Цена без налога: ${product1}`);
-console.log(`Итоговая цена: ${calculateTotal(product1, rate)}`); 
-// --- БЛОК 2: DOM-МАНИПУЛЯЦИЯ (ИНТЕРАКТИВНОСТЬ) ---
+function showNotification(message, type = 'success') {
+    const container = document.getElementById('notification-container');
+    if (!container) return;
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 2.1. Находим кнопку по ID
-    const button = document.getElementById('testButton'); 
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    container.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+function displayCartItems() {
+    const container = document.getElementById('cart-items-container');
+    const cart = getCart();
+
+    if (!container) return; 
+
+    if (cart.length === 0) {
+        container.innerHTML = '<p id="empty-cart-message">Ваша корзина пуста.</p>';
+        return;
+    }
+
+    container.innerHTML = ''; 
+
+    cart.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        
+        const imagePath = window.location.pathname.includes('/pages/') ? `../${item.image}` : item.image;
+
+        itemElement.innerHTML = `
+            <div class="cart-item-details">
+                <img src="${imagePath}" alt="${item.name}">
+                <div class="item-info">
+                    <p><strong>${item.name}</strong></p>
+                    <p>Цена: ${item.price.toLocaleString('ru-RU')} руб.</p>
+                    <p>Количество: ${item.quantity}</p>
+                </div>
+            </div>
+            <div class="cart-item-controls">
+                <button class="remove-item-btn" data-name="${item.name}">Удалить</button>
+            </div>
+        `;
+        container.appendChild(itemElement);
+    });
+
+    container.querySelectorAll('.remove-item-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const name = e.target.dataset.name;
+            removeFromCart(name);
+        });
+    });
+}
+
+function updateCartDisplay() {
+    const cart = getCart();
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+
+        totalItems += item.quantity;
+        totalPrice += item.price * item.quantity;
+    });
+
+    // ОБНОВЛЕНИЕ СУММЫ/КОЛИЧЕСТВА НА ВСЕХ СТРАНИЦАХ (В ШАПКЕ)
+    const cartCountElements = document.querySelectorAll('#cart-count');
+    const cartTotalElements = document.querySelectorAll('#cart-total');
+
+    cartCountElements.forEach(el => {
+        el.textContent = `Корзина (${totalItems})`;
+        el.href = window.location.pathname.includes('/pages/') ? 'cart.html' : 'pages/cart.html';
+    });
+
+    cartTotalElements.forEach(el => {
+        el.textContent = `Сумма: ${totalPrice.toLocaleString('ru-RU')} руб.`;
+        el.href = window.location.pathname.includes('/pages/') ? 'cart.html' : 'pages/cart.html';
+    });
     
-    // 2.2. Находим элемент для изменения (например, главный заголовок h1)
-    const title = document.querySelector('h1');
+    // ОБНОВЛЕНИЕ ВНУТРИ СТРАНИЦЫ КОРЗИНЫ
+    const finalTotalElement = document.getElementById('final-total');
+    if (finalTotalElement) {
+        finalTotalElement.textContent = `${totalPrice.toLocaleString('ru-RU')} руб.`;
+        displayCartItems(); // МГНОВЕННО ПЕРЕРИСОВЫВАЕМ ТОВАРЫ
+    }
+}
 
-    if (button && title) {
-        // 2.3. Добавление обработчика клика
-        button.addEventListener('click', () => {
-            // 2.4. Меняем текст и стиль
-            title.textContent = "Успешная DOM-манипуляция!";
-            button.style.backgroundColor = 'red';
-            
-            // 2.5. Скрываем кнопку через 2 секунды
-            setTimeout(() => {
-                button.style.display = 'none'; // Правильная команда для скрытия
-            }, 2000);
+function addToCart(productName, productPrice) {
+    let cart = getCart();
+    const product = allProducts.find(p => p.name === productName);
+    
+    if (!product) {
+        showNotification(`Ошибка: товар "${productName}" не найден.`, 'info');
+        return;
+    }
+
+    const itemIndex = cart.findIndex(item => item.name === productName);
+
+    if (itemIndex > -1) {
+        cart[itemIndex].quantity++;
+    } else {
+        cart.push({
+            name: productName,
+            price: productPrice,
+            quantity: 1,
+            image: product.image 
         });
     }
+
+    saveCart(cart);
+    showNotification(`${productName} добавлен в корзину!`);
+}
+
+function removeFromCart(productName) {
+    let cart = getCart();
+    cart = cart.filter(item => item.name !== productName);
+    saveCart(cart); // saveCart вызывает updateCartDisplay, который перерисует корзину
+    showNotification(`${productName} удален из корзины.`, 'info');
+}
+
+function clearCart() {
+    saveCart([]);
+    showNotification('Корзина очищена.', 'info');
+}
+
+function renderPopularProducts() {
+    const container = document.querySelector('#Popular-products .product-container');
+    if (!container) return;
+
+    container.innerHTML = popularProductsData.map(product => `
+        <div class="product-card"> 
+            <h3>${product.name}</h3>
+            <img src="${product.image}" alt="${product.name}">
+            <p>Цена: ${product.price.toLocaleString('ru-RU')} руб.</p>
+            <button class="add-to-cart-btn" data-name="${product.name}" data-price="${product.price}">Добавить в корзину</button>
+        </div>
+    `).join('');
+}
+
+function bindEventListeners() {
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const name = e.target.dataset.name;
+            const price = parseInt(e.target.dataset.price);
+            addToCart(name, price);
+        });
+    });
+
+    const clearBtn = document.getElementById('clear-cart-btn');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', clearCart);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderPopularProducts();
+    bindEventListeners();
+    updateCartDisplay();
 });
