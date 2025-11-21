@@ -3,34 +3,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
 
+    if (!tabButtons.length || !loginForm || !registerForm) return;
+
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Удаляем активный класс со всех кнопок
             tabButtons.forEach(btn => btn.classList.remove('active'));
-            // Добавляем активный класс нажатой кнопке
             button.classList.add('active');
 
             const formToShow = button.dataset.form;
 
-            // Скрываем/показываем формы
+            loginForm.classList.remove('active-form');
+            registerForm.classList.remove('active-form');
+
             if (formToShow === 'login') {
                 loginForm.classList.add('active-form');
-                loginForm.classList.remove('hidden-form');
-                registerForm.classList.add('hidden-form');
-                registerForm.classList.remove('active-form');
-            } else if (formToShow === 'register') {
+            } else {
                 registerForm.classList.add('active-form');
-                registerForm.classList.remove('hidden-form');
-                loginForm.classList.add('hidden-form');
-                loginForm.classList.remove('active-form');
             }
         });
-    });
+    }
+);
     
-    // Пример заглушки для формы (пока без реальной авторизации)
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Вход выполнен (функционал авторизации пока не реализован)');
+        alert('Вход выполнен (функционал в разработке)');
     });
 
     registerForm.addEventListener('submit', (e) => {
@@ -42,6 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Пароли не совпадают!');
             return;
         }
-        alert('Регистрация успешна (функционал авторизации пока не реализован)');
+        alert('Регистрация успешна (функционал в разработке)');
     });
 });

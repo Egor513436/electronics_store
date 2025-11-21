@@ -3,38 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас</title>
+    <title>О нас - Мир электроники</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
-        <h1>Информация о нас</h1>
-        <nav>
-            <ul>
-     <li> <a href="#" id="cart-total">Сумма: 0 руб.</a></li>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="delivery.html">Доставка и Оплата</a></li>
-            <li><a href="contact.html">Контакты</a></li>
-            <li><a href="faq.html">FAQ - Вопросы и Ответы</a></li>
-            <li><a href="reviews.html">Отзывы покупателей</a></li>
-            <li><a href="cart.html">Ваша Корзина</a></li>
-            <li><a href="auth.html">Вход и Регистрация</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../image/logo.png" alt="Логотип Мир Электроники" class="logo-icon">
+                <span>Мир Электроники</span>
+            </a>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="delivery.html">Доставка и Оплата</a></li>
+                    <li><a href="about.html" class="active">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="user-navigation">
+                <a href="cart.html" class="cart-widget">
+                    <img src="../image/corxina.jfif" alt="Корзина">
+                    <span id="cart-count-badge">0</span>
+                </a>
+                <a href="profile.html" class="profile-link">
+                    <img src="../image/Profile.png" alt="Профиль">
+                </a>
+                <a href="auth.html" class="btn btn-secondary header-auth-btn">Вход</a>
+            </div>
+            <button class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
+
    <main>
-    <section id="about-content">
-    <h1> О нас"Мир электроники"</h1>
-    <p class="onas">
-Добро пожаловать в "Мир электроники" – ваш надёжный проводник в мире инноваций! Мы работаем для вас с 2013 года, и за это время превратились из небольшого магазина в настоящую семью энтузиастов, которые разделяют вашу страсть к передовым технологиям. Наша миссия – сделать высококачественную электронику доступной для каждого, предлагая только проверенные гаджеты и комплектующие.
-        <img src="../image/offic.jpg" alt="Наш офис"> 
-            Мы гордимся каждым товаром в нашем ассортименте и гарантируем его качество. В "Мире электроники" вы найдете не просто устройство, а надёжного партнёра, который пройдёт с вами путь от выбора до послепродажной поддержки. Наша команда всегда готова помочь, ведь мы ценим каждого клиента и стремимся предоставить лучший сервис 24/7. Будьте уверены: с нами ваше будущее уже сегодня!
-            <img src="../image/scale_1200.png" alt="Наш сервис">
+    <section class="text-content-section page-section">
+        <div class="container">
+            <h2>О компании "Мир Электроники"</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Добро пожаловать в "Мир электроники у Дуплищева" – ваш надёжный проводник в мире инноваций! Мы работаем для вас с 2013 года, и за это время превратились из небольшого магазина в настоящую семью энтузиастов, которые разделяют вашу страсть к передовым технологиям.</p>
+                    <p>Наша миссия – сделать высококачественную электронику доступной для каждого, предлагая только проверенные гаджеты и комплектующие от ведущих мировых брендов. Мы гордимся каждым товаром в нашем ассортименте и гарантируем его качество.</p>
+                    <p>В "Мире электроники" вы найдете не просто устройство, а надёжного партнёра, который пройдёт с вами путь от выбора до послепродажной поддержки. Наша команда всегда готова помочь, ведь мы ценим каждого клиента и стремимся предоставить лучший сервис 24/7. Будьте уверены: с нами ваше будущее уже сегодня!</p>
+                </div>
+                <div class="about-images">
+                    <img src="../image/alo.png" alt="Наш офис"> 
+                    <img src="../image/al.png" alt="Наш сервис">
+                </div>
+            </div>
+        </div>
     </section>
    </main>
-   <footer>
-    &copy; Работаем для вас с 2013 года !!!
-   </footer>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-block">
+                <h4>Мир Электроники</h4>
+                <p>&copy; 2013-2025. Все права защищены.</p>
+            </div>
+            <div class="footer-block">
+                <h4>Навигация</h4>
+                <ul>
+                    <
+li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-block">
+                <h4>Контакты</h4>
+                <p>+7 (495) 123-45-67</p>
+                <p>info@mirelectroniki.ru</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="notification-container"></div>
+    <script src="../script.js"></script>
 </body>
 </html>

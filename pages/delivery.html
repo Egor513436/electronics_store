@@ -3,57 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Доставка и Оплата - ElectroShop</title>
+    <title>Доставка и Оплата - Мир электроники</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
-        <h1>Доставка и Оплата</h1>
-        <nav>
-            <ul>
-         <li> <a href="#" id="cart-total">Сумма: 0 руб.</a></li>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="contact.html">Контакты</a></li>
-            <li><a href="faq.html">FAQ - Вопросы и Ответы</a></li>
-            <li><a href="reviews.html">Отзывы покупателей</a></li>
-            <li><a href="cart.html">Ваша Корзина</a></li>
-            <li><a href="auth.html">Вход и Регистрация</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../image/logo.svg" alt="Логотип Мир Электроники" class="logo-icon">
+                <span>Мир Электроники</span>
+            </a>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="delivery.html" class="active">Доставка и Оплата</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="user-navigation">
+                <a href="cart.html" class="cart-widget">
+                    <img src="../image/corxina.jfif" alt="Корзина">
+                    <span id="cart-count-badge">0</span>
+                </a>
+                <a href="profile.html" class="profile-link">
+                    <img src="../image/Profile.png" alt="Профиль">
+                </a>
+                <a href="auth.html" class="btn btn-secondary header-auth-btn">Вход</a>
+            </div>
+            <button class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
-    <main>
-        <section id="delivery-info">
-            <h2>Сроки и условия доставки</h2>
-            <div class="info-block">
-                <h3>Доставка по городу</h3>
-                <p>Осуществляется курьерской службой в течение 1-2 рабочих дней после подтверждения заказа. Стоимость: 300 руб. При заказе от 50 000 руб. — бесплатно.</p>
-            </div>
-            <div class="info-block">
-                <h3>Доставка по России</h3>
-                <p>Доставляем транспортными компаниями (СДЭК, Boxberry). Срок зависит от региона (от 3 до 10 дней). Стоимость рассчитывается по тарифам перевозчика.</p>
-            </div>
-        </section>
 
-        <section id="payment-methods">
-            <h2>Способы оплаты</h2>
-            <div class="info-block">
-                <h3>Онлайн-оплата</h3>
-                <p>Принимаем банковские карты Visa, MasterCard, МИР. Оплата происходит через защищенный платежный шлюз.</p>
-            </div>
-            <div class="info-block">
-                <h3>Наличными курьеру</h3>
-                <p>Возможность оплаты наличными при получении товара (только для доставки по городу).</p>
-            </div>
-            <div class="info-block">
-                <h3>Безналичный расчет (для юр. лиц)</h3>
-                <p>Выставляем счет на оплату после оформления заказа. Все необходимые документы предоставляются.</p>
+    <main>
+        <section class="text-content-section page-section">
+            <div class="container">
+                <h2>Доставка и Оплата</h2>
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h3>Сроки и условия доставки</h3>
+                        <h4>Доставка по городу</h4>
+                        <p>Осуществляется курьерской службой в течение 1-2 рабочих дней после подтверждения заказа. Стоимость: 300 руб. При заказе от 50 000 руб. — бесплатно.</p>
+                        <h4>Доставка по России</h4>
+                        <p>Доставляем транспортными компаниями (СДЭК, Boxberry). Срок зависит от региона (от 3 до 10 дней). Стоимость рассчитывается по тарифам перевозчика.</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Способы оплаты</h3>
+                        <h4>Онлайн-оплата</h4>
+                        <p>Принимаем банковские карты Visa, MasterCard, МИР. Оплата происходит через защищенный платежный шлюз.</p>
+                        <h4>Наличными курьеру</h4>
+                        <p>Возможность оплаты наличными при получении товара (только для доставки по городу).</p>
+                        <h4>Безналичный расчет (для юр. лиц)</h4>
+                        <p>Выставляем счет на оплату после оформления заказа. Все необходимые документы предоставляются.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <footer>
-        &copy; Работаем для вас с 2013 года !!!
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-block">
+                <h4>Мир Электроники</h4>
+                <p>&copy; 2013-2025. Все права защищены.</p>
+            </div>
+            <div class="footer-block">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+<div class="footer-block">
+                <h4>Контакты</h4>
+                <p>+7 (495) 123-45-67</p>
+                <p>info@mirelectroniki.ru</p>
+            </div>
+        </div>
     </footer>
+
+    <div id="notification-container"></div>
+    <script src="../script.js"></script>
 </body>
 </html>

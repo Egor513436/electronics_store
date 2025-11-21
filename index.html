@@ -3,84 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мир электроники</title>
+    <title>Мир электроники у Дуплищева</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-    <h1>Мир электроники</h1>
-    <nav>
-        <ul>
-            <!-- ОБНОВЛЕННЫЕ ССЫЛКИ КОРЗИНЫ -->
-            <li><a href="pages/cart.html" id="cart-count">Корзина (0)</a></li>
-            <li><a href="pages/cart.html" id="cart-total">Сумма: 0 руб.</a></li>
 
-            <li><a href="pages/profile.html">Мой Профиль</a></li>
-            <li><a href="pages/catalog.html">Каталог</a></li>
-            <li><a href="pages/delivery.html">Доставка и Оплата</a></li>
-            <li><a href="pages/about.html">О нас</a></li>
-            <li><a href="pages/contact.html">Контакты</a></li>
-            <li><a href="pages/faq.html">FAQ</a></li>
-            <li><a href="pages/reviews.html">Отзывы</a></li>
-            <li><a href="pages/auth.html">Вход / Регистрация</a></li>
-        </ul>
-    </nav>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="image/logo.png" alt="Логотип Мир Электроники" class="logo-icon">
+                <span>Мир Электроники</span>
+            </a>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="pages/catalog.html">Каталог</a></li>
+                    <li><a href="pages/delivery.html">Доставка и Оплата</a></li>
+                    <li><a href="pages/about.html">О нас</a></li>
+                    <li><a href="pages/contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="user-navigation">
+                <a href="pages/cart.html" class="cart-widget">
+                    <img src="image/corxina.jfif" alt="Корзина">
+                    <span id="cart-count-badge">0</span>
+                </a>
+                <a href="pages/profile.html" class="profile-link">
+                    <img src="image/Profile.png" alt="Профиль">
+                </a>
+                <a href="pages/auth.html" class="btn btn-secondary header-auth-btn">Вход</a>
+            </div>
+            <button class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
+
     <main>
-    <section id="hero">
-    <h2>
-        Добро пожаловать в ElectroShop!
-    </h2>
-    <p> Погрузитесь в мир передовых технологий! У нас вы найдете всё: от мощных компьютеров до новейших гаджетов. Откройте будущее сегодня!</p>
-    </section>
+        <section class="hero-section">
+            <div class="container hero-layout">
+                <div class="hero-text">
+                    <h1>Добро пожаловать в мир передовых технологий!</h1>
+                    <p>У нас вы найдете всё: от мощных компьютеров и видеокарт до новейших гаджетов. Откройте будущее сегодня!</p>
+                    <a href="pages/catalog.html" class="btn btn-primary">Перейти в каталог</a>
+                </div>
+                <div class="hero-image">
+                    <img src="image/alloooo.png" alt="Ассортимент современной электроники: ноутбук, смартфон, наушники">
+                </div>
+            </div>
+        </section>
 
-    <section id="Popular-products">
-     <h2> 
-        Наши популярные товары
-     </h2>
-     <!-- Товары будут рендериться здесь через JS -->
-     <div class="product-container">
-     </div>
-    </section>
+        <section class="products-section">
+            <div class="container">
+                <h2>Популярные товары</h2>
+                <div class="product-grid" id="popular-products-grid">
+                </div>
+            </div>
+        </section>
 
-    <section id="advantages">
-     <h2>
-        Наши преимущества
-     </h2>
-     <div class="advantages-grid">
-         <div class="advantages-container">
-            <img src="image/i (2).webp" alt="Быстрая доставка">
-            <h3> 
-                Быстрая доставка
-            </h3>
-            <p>Доставляем ваши заказы в кратчайшие сроки по всей стране</p>
-         </div>
-         <div class="advantages-container">
-             <img src="image/hero-benefits-icon-warrant2.png" alt="Гарантия качества">
-             <h3>
-                Гарантия качества
-             </h3>
-             <p>Все наши товары проходят строгий контроль. Мы уверены в их надежности и предоставляем полную гарантию.</p>
-         </div>
-         <div class="advantages-container">
-             <img src="image/IPTV elements 3.png" alt="Поддержка 24/7">
-             <h3>
-                Поддержка 24/7
-             </h3>
-             <p>Наши специалисты всегда готовы помочь. Днем и ночью</p>
-         </div>
-     </div>
-    </section>
-    
-    <div class="catalog-button-wrapper">
-     <a href="pages/catalog.html
-" class="catalog-button">Посмотреть весь каталог</a>
-    </div>
+        <section class="advantages-section">
+            <div class="container">
+                <h2>Наши преимущества</h2>
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <img src="image/i (2).webp" alt="Иконка быстрой доставки">
+                        <h3>Быстрая доставка</h3>
+                        <p>Доставляем ваши заказы в кратчайшие сроки по всей стране.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="image/hero-benefits-icon-warrant2.png" alt="Иконка гарантии
+качества">
+                        <h3>Гарантия качества</h3>
+                        <p>Вся наша продукция сертифицирована и проходит строгий контроль качества.</p>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="image/IPTV elements 3.png" alt="Иконка поддержки 24/7">
+                        <h3>Поддержка 24/7</h3>
+                        <p>Наши специалисты готовы помочь вам с выбором и ответить на любые вопросы.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer>
-        <p>&copy; Работаем для вас с 2013 года!</p>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-block">
+                <h4>Мир Электроники</h4>
+                <p>&copy; 2013-2025. Все права защищены.</p>
+            </div>
+            <div class="footer-block">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="pages/catalog.html">Каталог</a></li>
+                    <li><a href="pages/about.html">О нас</a></li>
+                    <li><a href="pages/reviews.html">Отзывы</a></li>
+                    <li><a href="pages/faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-block">
+                <h4>Контакты</h4>
+                <p>+7 (495) 123-45-67</p>
+                <p>info@mirelectroniki.ru</p>
+            </div>
+        </div>
     </footer>
-    <script src="script.js"></script>
+
     <div id="notification-container"></div>
+    <script src="script.js"></script>
 </body>
 </html>

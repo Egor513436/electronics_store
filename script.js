@@ -1,199 +1,230 @@
-const popularProductsData = [
-    {
-        "id": 1,
-        "name": "Игровая консоль PS5",
-        "price": 65000,
-        "image": "image/PS5.webp"
-    },
-    {
-        "id": 2,
-        "name": "Видеокарта RTX 5090",
-        "price": 200000,
-        "image": "image/Видео карта 5090.jpg"
-    }
-];
+document.addEventListener('DOMContentLoaded', () => {
 
-const allProducts = [
-    ...popularProductsData, 
-    { "id": 3, "name": "Ноутбук Gaming Pro", "price": 120000, "image": "image/ноутбук.webp" },
-    { "id": 4, "name": "Смартфон Ultra X", "price": 80000, "image": "image/Смартфон.webp" },
-    { "id": 5, "name": "Системный блок игровой ПК MaxON-small PRO i7 7700  RX580 8gb, 32gb ОЗУ, SSD 1024GB", "price": 40000, "image": "image/orig.webp" },
-    { "id": 6, "name": "Монитор", "price": 45168, "image": "image/optimize.webp" },
-    { "id": 7, "name": "Клавиатура", "price": 5962, "image": "image/optimize (1).webp" }
-];
+    const allProducts = [
+        { "id": "ps5", "name": "Игровая консоль PS5", "price": 65000, "image": "image/PS5.webp", "popular": true },
+        { "id": "gpu-rtx-5090", "name": "Видеокарта RTX 5090", "price": 200000, "image": "image/Видео карта 5090.jpg", "popular": true },
+        { "id": "laptop-gaming-pro", "name": "Ноутбук Gaming Pro", "price": 120000, "image": "image/ноутбук.webp", "popular": false },
+        { "id": "smartphone-ultra-x", "name": "Смартфон Ultra X", "price": 80000, "image": "image/Смартфон.webp", "popular": true },
+        { "id": "pc-maxon-pro", "name": "Игровой ПК MaxON-small PRO", "price": 40000, "image": "image/orig.webp", "popular": false },
+        { "id": "monitor-lg-27", "name": "Монитор LG 27\" UltraGear", "price": 45168, "image": "image/optimize.webp", "popular": false },
+        { "id": "keyboard-aula-f98", "name": "Клавиатура AULA F98Pro", "price": 5962, "image": "image/optimize (1).webp", "popular": false }
+    ];
 
-function getCart() {
-    return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
-function saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartDisplay(); 
-}
-
-function showNotification(message, type = 'success') {
-    const container = document.getElementById('notification-container');
-    if (!container) return;
-
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    container.appendChild(notification);
-
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
-}
-
-function displayCartItems() {
-    const container = document.getElementById('cart-items-container');
-    const cart = getCart();
-
-    if (!container) return; 
-
-    if (cart.length === 0) {
-        container.innerHTML = '<p id="empty-cart-message">Ваша корзина пуста.</p>';
-        return;
+    function getCart() {
+        return JSON.parse(localStorage.getItem('cart')) || [];
     }
 
-    container.innerHTML = ''; 
+    function saveCart(cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+    }
 
-    cart.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.className = 'cart-item';
-        
-        let itemPath = item.image; 
-        if (window.location.pathname.includes('/pages/')) {
-             itemPath = `../${item.image}`; 
-        }
+    function showNotification(message, type = 'success') {
+        const container = document.getElementById('notification-container');
+        if (!container) return;
 
-        itemElement.innerHTML = `
-            <div class="cart-item-details">
-                <img src="${itemPath}" alt="${item.name}">
-                <div class="item-info">
-                    <p><strong>${item.name}</strong></p>
-                    <p>Цена: ${item.price.toLocaleString('ru-RU')} руб.</p>
-                    <p>Количество: ${item.quantity}</p>
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+container.appendChild(notification);
+    }
+
+    function formatPrice(price) {
+        return price.toLocaleString('ru-RU');
+    }
+
+    function createProductCard(product) {
+        const imagePath = getCorrectImagePath(product.image);
+        return `
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="${imagePath}" alt="${product.name}">
                 </div>
-            </div>
-            <div class="cart-item-controls">
-                <button class="remove-item-btn" data-name="${item.name}">Удалить</button>
+                <h3>${product.name}</h3>
+                <p class="product-price">${formatPrice(product.price)} руб.</p>
+                <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}">Добавить в корзину</button>
             </div>
         `;
-        container.appendChild(itemElement);
-    });
-
-    container.querySelectorAll('.remove-item-btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const name = e.target.dataset.name;
-            removeFromCart(name);
-        });
-    });
-}
-
-function updateCartDisplay() {
-    const cart = getCart();
-    let totalItems = 0;
-    let totalPrice = 0;
-
-    cart.forEach(item => {
-        totalItems += item.quantity;
-        totalPrice += item.price * item.quantity;
-    });
-
-    const cartCountElements = document.querySelectorAll('#cart-count');
-    const cartTotalElements = document.querySelectorAll('#cart-total');
-
-    const cartLink = window.location.pathname.includes('/pages/') ? 'cart.html' : 'pages/cart.html';
-
-    cartCountElements.forEach(el => {
-        el.textContent = `Корзина (${totalItems})`;
-        el.href = cartLink;
-    });
-
-    cartTotalElements.forEach(el => {
-        el.textContent = `Сумма: ${totalPrice.toLocaleString('ru-RU')} руб.`;
-        el.href = cartLink;
-    });
+    }
     
-    const finalTotalElement = document.getElementById('final-total')
-;
-    if (finalTotalElement) {
-        finalTotalElement.textContent = `${totalPrice.toLocaleString('ru-RU')} руб.`;
-        displayCartItems(); 
+    function getCorrectImagePath(path) {
+        return window.location.pathname.includes('/pages/') ? `../${path}` : path;
     }
-}
-
-function addToCart(productName, productPrice) {
-    let cart = getCart();
-    const product = allProducts.find(p => p.name === productName);
     
-    if (!product) {
-        showNotification(`Ошибка: товар "${productName}" не найден.`, 'info');
-        return;
+    function renderProducts(containerId, filterFn) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        container.innerHTML = allProducts
+            .filter(filterFn)
+            .map(createProductCard)
+            .join('');
+    }
+    
+    function updateCartDisplay() {
+        const cart = getCart();
+        let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        const cartBadge = document.getElementById('cart-count-badge');
+        if (cartBadge) {
+            cartBadge.textContent = totalItems;
+            cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+        
+        if (window.location.pathname.includes('/cart.html')) {
+            renderCartPage();
+        }
     }
 
-    const itemIndex = cart.findIndex(item => item.name === productName);
+    function renderCartPage() {
+        const cart = getCart();
+        const container = document.getElementById('cart-items-container');
+        const summary = document.getElementById('cart-summary');
+        const finalTotalEl = document.getElementById('final-total');
 
-    if (itemIndex > -1) {
-        cart[itemIndex].quantity++;
-    } else {
-        cart.push({
-            name: productName,
-            price: productPrice,
-            quantity: 1,
-            image: product.image 
+        if (!container || !summary) return;
+
+        if (cart.length === 0) {
+            container.innerHTML = '<p id="empty-cart-message">Ваша корзина пуста. Время добавить что-нибудь крутое!</p>';
+            summary.classList.add('hidden');
+            return;
+        }
+
+        summary.classList.remove('hidden');
+        container.innerHTML = '';
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            const product = allProducts.find(p => p.id === item.id);
+            if (!product) return;
+
+            totalPrice += product.price * item.quantity;
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.innerHTML = `
+                <div class="cart-item-image">
+                    <img src="${getCorrectImagePath(product.image)}" alt="${product.name}">
+                </div>
+                <div class="cart-item-details">
+                    <h3>${product.name}</h3>
+                    <p>${formatPrice(product.price)} руб.</p>
+                </div>
+                <div class="cart-item-controls">
+                    <div class="quantity-control">
+                        <button class="quantity-change" data-id="${item.id}" data-change="-1">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-change" data-id="${item.id}" data-change="1">+</button>
+                    </div>
+                    <button class="remove-item-btn" data-id="${item.id}">
+                        <img src="../image/delete-icon.svg" alt="Удалить">
+                    </button>
+                </div>
+            `;
+            container.appendChild(itemElement);
+        });
+
+        finalTotalEl.textContent = `${formatPrice(totalPrice)} руб.`;
+    }
+
+    function addToCart(productId) {
+        let cart = getCart();
+        const product = allProducts.find(p => p.id === productId);
+        if (!product) return;
+
+        const itemInCart = cart.find(item => item.id === productId);
+        if (itemInCart) {
+            itemInCart.quantity++;
+        } else {
+            cart.push({ id: productId, quantity: 1 });
+        }
+        saveCart(cart);
+        showNotification(`${product.name} добавлен в корзину!`);
+    }
+
+    function changeQuantity(productId, change) {
+        let cart = getCart();
+        const itemInCart = cart.find(item => item.id === productId);
+        if (!itemInCart) return;
+
+        itemInCart.quantity += change;
+
+        if (itemInCart.quantity <= 0) {
+            cart = cart.filter(item => item.id !== productId);
+        }
+        saveCart(cart);
+    }
+    
+    function removeItemFromCart(productId) {
+        let cart = getCart();
+        const product = allProducts.find(p => p.id === productId);
+        cart = cart.filter(item => item.id !== productId);
+        saveCart(cart);
+        if (product) {
+            showNotification(`${product.name} удален из корзины.`, 'info');
+        }
+    }
+
+    function clearCart() {
+        saveCart([]);
+        showNotification('Корзина очищена.', 'info');
+    }
+    
+    function handleBurgerMenu() {
+        const burger = document.getElementById('burger-menu');
+        const nav = document.querySelector('.main-navigation');
+        if (burger && nav) {
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        }
+    }
+
+    function handleFaqAccordion() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            question.addEventListener('click', () => {
+                const isActive = question.classList.contains('active');
+                
+                faqItems.forEach(i => {
+                    i.querySelector('.faq-question').classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                });
+                
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
         });
     }
 
-    saveCart(cart);
-    showNotification(`${productName} добавлен в корзину!`);
-}
-
-function removeFromCart(productName) {
-    let cart = getCart();
-    cart = cart.filter(item => item.name !== productName);
-    saveCart(cart);
-    showNotification(`${productName} удален из корзины.`, 'info');
-}
-
-function clearCart() {
-    saveCart([]);
-    showNotification('Корзина очищена.', 'info');
-}
-
-function renderPopularProducts() {
-    const container = document.querySelector('#Popular-products .product-container');
-    if (!container) return;
-
-    container.innerHTML = popularProductsData.map(product => `
-        <div class="product-card"> 
-            <h3>${product.name}</h3>
-            <img src="${product.image}" alt="${product.name}">
-            <p>Цена: ${product.price.toLocaleString('ru-RU')} руб.</p>
-            <button class="add-to-cart-btn" data-name="${product.name}" data-price="${product.price}">Добавить в корзину</button>
-        </div>
-    `).join('');
-}
-
-function bindEventListeners() {
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const name = e.target.dataset.name;
-            const price = parseInt(e.target.dataset.price);
-            addToCart(name, price);
-        });
+    document.body.addEventListener('click', (e) => {
+        if (e.target.closest('.add-to-cart-btn')) {
+            const productId = e.target.closest('.add-to-cart-btn').dataset.id;
+            addToCart(productId);
+        }
+        if (e.target.closest('.quantity-change')) {
+            const button = e.target.closest('.quantity-change');
+            const productId = button.dataset.id;
+            const change = parseInt(button.dataset.change);
+            changeQuantity(productId, change);
+        }
+        if (e.target.closest('.remove-item-btn')) {
+            const productId = e.target.closest('.remove-item-btn').dataset.id;
+            removeItemFromCart(productId);
+        }
+        if (e.target.id === 'clear-cart-btn') {
+            clearCart();
+        }
     });
 
-    const clearBtn = document.getElementById('clear-cart-btn');
-    if (clearBtn) {
-        clearBtn.addEventListener('click', clearCart);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    updateCartDisplay(); 
-    renderPopularProducts();
-    bindEventListeners();
+    renderProducts('popular-products-grid', p => p.popular);
+    renderProducts('catalog-products-grid', p => true);
+    
+    handleBurgerMenu();
+    handleFaqAccordion();
+    updateCartDisplay();
 });

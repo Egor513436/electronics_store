@@ -3,63 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отзывы покупателей - ElectroShop</title>
+    <title>Отзывы - Мир электроники</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
-        <h1>Отзывы наших клиентов</h1>
-        <nav>
-            <ul>
-                <li> <a href="#" id="cart-count">Корзина (0)</a></li>
-                <li> <a href="#" id="cart-total">Сумма: 0 руб.</a></li>
-                <li><a href="../index.html">Главная</a></li> 
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="delivery.html">Доставка и Оплата</a></li> 
-                <li><a href="about.html">О нас</a></li> 
-                <li><a href="contact.html">Контакты</a></li> 
-                <li><a href="faq.html">FAQ - Вопросы и Ответы</a></li>
-                <li><a href="cart.html">Ваша Корзина</a></li>
-                <li><a href="auth.html">Вход/Регистрация</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="reviews-section">
-            <h2>Что говорят о нас</h2>
-            
-            <div class="review-form-wrapper">
-                <h3>Оставить свой отзыв</h3>
-                <form id="review-form">
-                    <div class="form-group">
-                        <label for="review-name">Ваше имя:</label>
-                        <input type="text" id="review-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="review-text">Отзыв:</label>
-                        <textarea id="review-text" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="bob">Отправить отзыв</button>
-                </form>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../image/logo.svg" alt="Логотип Мир Электроники" class="logo-icon">
+                <span>Мир Электроники</span>
+            </a>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="delivery.html">Доставка и Оплата</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="user-navigation">
+                <a href="cart.html" class="cart-widget">
+                    <img src="../image/corxina.jfif" alt="Корзина">
+                    <span id="cart-count-badge">0</span>
+                </a>
+                <a href="profile.html" class="profile-link">
+                    <img src="../image/Profile.png" alt="Профиль">
+                </a>
+                <a href="auth.html" class="btn btn-secondary header-auth-btn">Вход</a>
             </div>
+            <button class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
-            <!-- Контейнер для отображения отзывов -->
-            <div class="reviews-container">
-                <div class="review-card">
-                    <img class="bb" src="../image/ноутбук.webp" alt="">
-                    <p class="review-text">Купил ноутбук Gaming Pro. Доставили быстро, за 2 дня. Упаковка целая, ноут летает! Очень доволен сервисом.</p>
-                    <p class="review-author">— Андрей, г. Москва</p>
-                </div>
-                <div class="review-card">
-                    <img class="bb" src="../image/Видео карта 5090.jpg" alt="">
-                    <p class="review-text">Постоянно заказываю тут комплектующие. Цены отличные, консультанты всегда на связи. Рекомендую!</p>
-                    <p class="review-author">— Сергей, системный администратор</p>
+    <main>
+        <section class="reviews-section page-section">
+<div class="container">
+                <h2>Отзывы наших клиентов</h2>
+                <div class="reviews-layout">
+                    <div class="reviews-container">
+                        <div class="review-card">
+                            <p class="review-text">"Купил ноутбук Gaming Pro. Доставили быстро, за 2 дня. Упаковка целая, ноут летает! Очень доволен сервисом."</p>
+                            <p class="review-author">— Андрей, г. Москва</p>
+                        </div>
+                        <div class="review-card">
+                            <p class="review-text">"Постоянно заказываю тут комплектующие. Цены отличные, консультанты всегда на связи. Рекомендую!"</p>
+                            <p class="review-author">— Сергей, системный администратор</p>
+                        </div>
+                        <div class="review-card">
+                            <p class="review-text">"Заказывала смартфон в подарок. Помогли выбрать модель, быстро оформили. Именинник счастлив, спасибо вам большое!"</p>
+                            <p class="review-author">— Елена, г. Санкт-Петербург</p>
+                        </div>
+                    </div>
+                    <div class="review-form-wrapper">
+                        <h3>Оставить свой отзыв</h3>
+                        <form id="review-form">
+                            <div class="form-group">
+                                <label for="review-name">Ваше имя:</label>
+                                <input type="text" id="review-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="review-text">Отзыв:</label>
+                                <textarea id="review-text" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-    <footer>
-        &copy; Работаем для вас с 2013 года !!!
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-block">
+                <h4>Мир Электроники</h4>
+                <p>&copy; 2013-2025. Все права защищены.</p>
+            </div>
+            <div class="footer-block">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-block">
+                <h4>Контакты</h4>
+                <p>+7 (495) 123-45-67</p>
+                <p>info@mirelectroniki.ru</p>
+            </div>
+        </div>
     </footer>
+
+    <div id="notification-container"></div>
+    <script src="../script.js"></script>
 </body>
 </html>
