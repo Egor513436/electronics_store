@@ -869,6 +869,10 @@ i {
 }
 
 @media (max-width: 576px) {
+     .hero-image img {
+        max-width: 100%; 
+    }
+}
     .logo span {
         display: none;
     }
@@ -885,4 +889,6 @@ i {
     .summary-actions {
         flex-direction: column-reverse;
     }
+.lol {
+    color: rgb(193, 193, 193)
 }

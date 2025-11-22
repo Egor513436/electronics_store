@@ -116,7 +116,7 @@ container.appendChild(notification);
                         <button class="quantity-change" data-id="${item.id}" data-change="1">+</button>
                     </div>
                     <button class="remove-item-btn" data-id="${item.id}">
-                        <img src="../image/delete-icon.svg" alt="Удалить">
+                        <img src="../image/delete.png" alt="Удалить">
                     </button>
                 </div>
             `;
